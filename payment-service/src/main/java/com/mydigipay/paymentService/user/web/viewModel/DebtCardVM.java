@@ -2,6 +2,8 @@ package com.mydigipay.paymentService.user.web.viewModel;
 
 
 import com.mydigipay.paymentService.annotation.Length;
+import com.mydigipay.paymentService.user.model.DebtCard;
+import com.mydigipay.paymentService.user.model.User;
 import com.mydigipay.paymentService.user.web.validation.AddDebtCardValidationGroup;
 import com.mydigipay.paymentService.user.web.validation.UpdateDebtCardValidationGroup;
 import lombok.AllArgsConstructor;
@@ -33,4 +35,18 @@ public class DebtCardVM {
     @NotEmpty(groups = {UpdateDebtCardValidationGroup.class, AddDebtCardValidationGroup.class})
     @Pattern(regexp = "[0-9]+", groups = {UpdateDebtCardValidationGroup.class, AddDebtCardValidationGroup.class})
     private String expDate;
+
+    private Integer userId;
+
+    public DebtCard toModel() {
+        DebtCard debtCard = new DebtCard();
+        debtCard.setCardNumber(this.cardNumber);
+        debtCard.setExpDate(this.expDate);
+        debtCard.setTitle(this.title);
+        debtCard.setDeleted(false);
+        debtCard.setUser(new User(this.userId));
+        return debtCard;
+    }
+
+
 }

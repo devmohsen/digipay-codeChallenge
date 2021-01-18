@@ -1,7 +1,6 @@
 package com.mydigipay.paymentService.user.web.api;
 
 
-import com.mydigipay.paymentService.base.service.MapperService;
 import com.mydigipay.paymentService.user.model.DebtCard;
 import com.mydigipay.paymentService.user.service.IDebtCardService;
 import com.mydigipay.paymentService.user.web.validation.AddDebtCardValidationGroup;
@@ -18,29 +17,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DebtCardController {
 
-  private final IDebtCardService service;
-  private final MapperService mapperService;
+    private final IDebtCardService service;
 
-  @PostMapping
-  public DebtCardVM create(@RequestBody @Validated(AddDebtCardValidationGroup.class) DebtCardVM debtCardVM) {
-    DebtCard debtCard = mapperService.convert(debtCardVM, DebtCard.class);
-    service.save(debtCard);
-    return mapperService.convert(debtCard, DebtCardVM.class);
-  }
+    @PostMapping
+    public DebtCard create(@RequestBody @Validated(AddDebtCardValidationGroup.class) DebtCardVM debtCardVM) {
 
-  @PutMapping
-  public DebtCardVM update(@RequestBody @Validated(UpdateDebtCardValidationGroup.class) DebtCardVM debtCardVM) {
-    return mapperService.convert(service.update(debtCardVM), DebtCardVM.class);
-  }
+        DebtCard debtCard = debtCardVM.toModel();
+        service.save(debtCard);
+        return debtCard;
+    }
 
-  @DeleteMapping("/{id}")
-  public void delete(@PathVariable("id") Integer id) {
-    service.delete(id);
-  }
+    @PutMapping
+    public DebtCard update(@RequestBody @Validated(UpdateDebtCardValidationGroup.class) DebtCardVM debtCardVM) {
+        return service.update(debtCardVM);
+    }
 
-  @GetMapping("{userId}")
-  public List<DebtCardVM> findAll(@PathVariable Integer userId) {
-    return mapperService.convert(service.findAll(userId), DebtCardVM.class);
-  }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        service.delete(id);
+    }
+
+    @GetMapping("{userId}")
+    public List<DebtCard> findAll(@PathVariable Integer userId) {
+        return service.findAll(userId);
+    }
 
 }

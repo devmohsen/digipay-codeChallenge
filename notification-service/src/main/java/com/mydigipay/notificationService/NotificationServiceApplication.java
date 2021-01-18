@@ -1,6 +1,7 @@
 package com.mydigipay.notificationService;
 
 import com.mydigipay.notificationService.event.EventConfiguration;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Import;
 
         EventConfiguration.class
 })
+@EnableRabbit
 public class NotificationServiceApplication {
 
 
