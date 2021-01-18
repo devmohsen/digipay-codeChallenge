@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mysql-standalone-container:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=12252
+      - MYSQL_DATABASE=mydigipay
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=12252
+    volumes:
+      - /data/mysql
+  payment-service-container:
+    image: payment-service
+    script: docker build -f ./payment-service/Dockerfile -t payment-service

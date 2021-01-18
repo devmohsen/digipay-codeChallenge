@@ -42,7 +42,7 @@ public class TransferServiceImpl implements TransferService {
                             dto.getDestination(), dto.getAmount(), cardTransferResponse.isSuccess()));
 
                     if (cardTransferResponse.isSuccess()) {
-                        Boolean isSent = notificationServiceFeignClient.sendSmd(SmsRequest.builder()
+                        notificationServiceFeignClient.sendSmd(SmsRequest.builder()
                                 .msg("transfer-successful")
                                 .target(optionalDebtCard.get().getUser().getNumber())
                                 .build());

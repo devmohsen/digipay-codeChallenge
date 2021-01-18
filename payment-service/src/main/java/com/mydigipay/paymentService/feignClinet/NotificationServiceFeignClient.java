@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import reactor.core.publisher.Mono;
 
-@FeignClient(name = "notification-service" )
+@FeignClient(name = "notification-service" ,fallback = NotificationServiceFallBack.class  )
 public interface NotificationServiceFeignClient {
 
     @PostMapping("/sms/send")
-    Boolean sendSmd(@RequestBody SmsRequest request);
+    void sendSmd(@RequestBody SmsRequest request);
 }
