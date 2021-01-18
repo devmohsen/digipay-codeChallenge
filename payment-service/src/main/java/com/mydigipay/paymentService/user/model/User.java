@@ -35,6 +35,8 @@ public class User extends Audit implements Serializable {
     @Column(name = "identity_number")
     private String identityNumber;
 
+    private String number;
+
     public User(Integer id) {
         this.id = id;
     }

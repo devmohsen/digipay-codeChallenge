@@ -17,11 +17,9 @@ public class SmsController {
     private final SmsEventProducer smsEventProducer;
 
     @PostMapping("send")
-    public Mono<Boolean> sendSmd(@RequestBody SmsRequest request) {
+    public Boolean sendSmd(@RequestBody SmsRequest request) {
         smsEventProducer.sendMessage(request);
         int randomNum =(int) (Math.random() * 3);
-        if (randomNum == 0) {
-            return Mono.just(false);
-        } else return Mono.just(true);
+        return randomNum != 0;
     }
 }
