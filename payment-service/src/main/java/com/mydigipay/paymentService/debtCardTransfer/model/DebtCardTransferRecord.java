@@ -10,7 +10,8 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "debt_card_transfer_record")
+@Table(name = "debt_card_transfer_record",
+        indexes = {@Index(name = "created_date_index", columnList = "created_date")})
 @Getter
 @Setter
 @NoArgsConstructor

@@ -1,6 +1,7 @@
 package com.mydigipay.paymentService.debtCardTransfer.service.impl;
 
 import com.mydigipay.paymentService.debtCardTransfer.model.DebtCardTransferRecord;
+import com.mydigipay.paymentService.debtCardTransfer.repository.vm.RecordCountVM;
 import com.mydigipay.paymentService.debtCardTransfer.service.IBankService;
 import com.mydigipay.paymentService.debtCardTransfer.service.IDebtCardTransferRecordService;
 import com.mydigipay.paymentService.debtCardTransfer.service.TransferService;
@@ -17,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -51,5 +53,10 @@ public class TransferServiceImpl implements TransferService {
                     } else return Mono.just(new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR));
 
                 });
+    }
+
+    @Override
+    public RecordCountVM getReport(Date from, Date to) {
+        return transferRecordService.getReport(from, to);
     }
 }
