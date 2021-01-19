@@ -30,7 +30,9 @@ public class DebtCardTransferController {
     }
 
     @GetMapping("report")
-    public ResponseEntity<RecordCountVM> getReport(@RequestParam("from") String from, @RequestParam("to") String to) {
+    public ResponseEntity<RecordCountVM> getReport(@RequestParam("from") String from,
+                                                   @RequestParam("to") String to,
+                                                   @RequestParam("debtCardId") Integer debtCardId) {
         Date dateFrom = null;
         Date dateTo = null;
         try {
@@ -44,6 +46,6 @@ public class DebtCardTransferController {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<>(service.getReport(dateFrom, dateTo), HttpStatus.OK);
+        return new ResponseEntity<>(service.getReport(dateFrom, dateTo,debtCardId), HttpStatus.OK);
     }
 }

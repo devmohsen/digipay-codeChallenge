@@ -23,9 +23,6 @@ services:
     build: ./config-server
     ports:
       - "8888:8888"
-      - "18787:8787"
-    depends_on:
-      - rabbitmq
 
   registery-server:
     container_name: registery-server
@@ -34,6 +31,24 @@ services:
       - "8761:8761"
     depends_on:
       - config-server
+
+  zuul-gateway:
+    container_name: zuul-gateway
+    build: ./zuul-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - config-server
+
+  payment-service:
+    container_name: payment-service
+    build: ./payment-service
+    ports:
+      - "9091:9091"
+    depends_on:
+      - config-server
       - mysqldb
+
+
 
 

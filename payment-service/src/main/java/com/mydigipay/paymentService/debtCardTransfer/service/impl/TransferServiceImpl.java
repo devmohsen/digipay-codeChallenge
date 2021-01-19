@@ -56,7 +56,7 @@ public class TransferServiceImpl implements TransferService {
     }
 
     @Override
-    public RecordCountVM getReport(Date from, Date to) {
-        return transferRecordService.getReport(from, to);
+    public RecordCountVM getReport(Date from, Date to, Integer debtCardId) {
+        return transferRecordService.getReport(from, to,debtCardId);
     }
 }

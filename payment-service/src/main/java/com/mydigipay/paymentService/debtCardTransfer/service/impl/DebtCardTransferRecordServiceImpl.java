@@ -24,8 +24,8 @@ public class DebtCardTransferRecordServiceImpl extends GenericServiceImpl<DebtCa
     }
 
     @Override
-    public RecordCountVM getReport(Date from, Date to) {
+    public RecordCountVM getReport(Date from, Date to, Integer debtCardId) {
 
-        return repository.getReport(from, to);
+        return repository.getReport(from, to,debtCardId);
     }
 }

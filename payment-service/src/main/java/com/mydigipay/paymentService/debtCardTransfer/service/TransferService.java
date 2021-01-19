@@ -10,6 +10,6 @@ import java.util.Date;
 public interface TransferService {
     Mono<ResponseEntity<Boolean>> transfer(CardTransferDTO dto);
 
-    RecordCountVM getReport(Date from, Date to);
+    RecordCountVM getReport(Date from, Date to, Integer debtCardId);
 
 }

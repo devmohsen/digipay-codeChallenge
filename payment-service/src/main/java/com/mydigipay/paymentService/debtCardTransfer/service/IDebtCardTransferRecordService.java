@@ -10,5 +10,5 @@ import java.util.Date;
 public interface IDebtCardTransferRecordService extends IGenericService<DebtCardTransferRecord,Long> {
 
 
-    RecordCountVM getReport(Date from, Date to);
+    RecordCountVM getReport(Date from, Date to, Integer debtCardId);
 }
