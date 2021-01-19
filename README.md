@@ -37,6 +37,6 @@ bank service providers that mentioned in doc has sudo implementaion in codes in 
  
  
  Docker compose and tests will be add in further pushes.
- 
+ postman collection added to root.
  
  
