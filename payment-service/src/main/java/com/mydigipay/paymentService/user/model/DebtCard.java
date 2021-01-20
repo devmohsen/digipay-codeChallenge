@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Version;
 
 import javax.persistence.*;
 
@@ -35,4 +37,8 @@ public class DebtCard extends Audit {
 
     @Column(nullable = false, name = "exp_date")
     private String expDate;
+    
+    @Version
+    @JsonIgnore
+    private Integer version;
 }
