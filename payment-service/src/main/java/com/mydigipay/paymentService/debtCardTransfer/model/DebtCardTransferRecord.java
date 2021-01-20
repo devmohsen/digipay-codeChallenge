@@ -6,6 +6,8 @@ import com.mydigipay.paymentService.user.model.DebtCard;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Version;
 
 import javax.persistence.*;
 
@@ -29,6 +31,9 @@ public class DebtCardTransferRecord extends Audit {
     private Long amount;
     @Column(name = "successful", nullable = false)
     private Boolean successful = false;
+    @Version
+    @JsonIgnore
+    private Integer version;
 
     public DebtCardTransferRecord(DebtCard debtCard, String destinationCardNumber, Long amount, Boolean successful) {
         this.debtCard = debtCard;
